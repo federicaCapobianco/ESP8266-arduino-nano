@@ -4,7 +4,7 @@ How to connect an ESP8266 module to an arduino nano and using it as a wifi shiel
 
 
 
-PER QUANTO RIGUARDA IL COLLEGAMENTO:
+/*PER QUANTO RIGUARDA IL COLLEGAMENTO:
 
 usare un abbassatore di tensione dai 5v di arduino a 3.3v 
 Collegare il vcc dell'esp8266 ai 3.3v stabili
@@ -14,19 +14,23 @@ TX dell'esp a D2 di arduino senza alcuna resistenza
 RX dell'esp a D3 di arduino tramite una resistenza di 1k ohm verso arduino e una di pull out a gnd di 2k ohm
 
 HOW TO CONNECT
+
 Use a 5 to 3.3 voltage regulator to power the ESP module
 connect esp8266's vcc to the stabilized 3.3v from the voltage regulator
 connect ch-pd to 3.3v with a 10K ohm resistor
 connect esp's gnd to arduino gnd(Fundamental)
 connect esp's TX to arduino's D2 pin with no resistors
-connect esp's RX to arduino's D3 pin with a 1k ohm resistor between arduino and esp and a 2k ogm pull out resistor to gnd
+connect esp's RX to arduino's D3 pin with a 1k ohm resistor between arduino and esp and a 2k ogm pull out resistor to gnd */
 
 
 *****************************************************************************************************************************
 
 
-UTILIZZO 
+/* UTILIZZO 
 se la scheda una volta connessa come riportato riporta garbage values con gli sketch di esempio:
+
+USE
+Use one of the sample sketches avaliable, if they turn garbage values on serial then: */
 
 
 #include <SoftwareSerial.h>
@@ -48,15 +52,18 @@ void setup()
 
 void loop() 
 {
-    // listen for communication from the ESP8266 and then write it to the serial monitor
+    //listen for communication from the ESP8266 and then write it to the serial monitor
+    
     if ( ESPserial.available() )   {  Serial.write( ESPserial.read() );  }
 
-    // listen for user input and send it to the ESP8266
+    //listen for user input and send it to the ESP8266
+    
     if ( Serial.available() )       {  ESPserial.write( Serial.read() );  }
 }
 
 
-Procedere poi a inserire:
+/* Procedere poi a inserire: 
+   Then use: */
 
 
 
@@ -82,7 +89,8 @@ void loop()
     if ( Serial.available() )       {  ESPserial.write( Serial.read() );  }
 }
 
-ed infine:
+
+/*Then use: */
 
 
 
@@ -112,7 +120,8 @@ void loop()
 ****************************************************************************************************************************
 
 
-PER CONNETTERE AL WIFI:
+/* PER CONNETTERE AL WIFI: 
+   HOW TO CONNECT TO WIFI: */
 
 
 
@@ -214,7 +223,8 @@ void printCurrentNet() {
 ********************************************************************************************************************
 
 
-CONNESSIONE A BLYNK
+/* CONNESSIONE A BLYNK 
+   HOW TO CONNECT TO BLYNK */
 
 
 
@@ -295,4 +305,5 @@ void loop()
   Blynk.run();
 }
 
-DOPODICHE' DALL'APP BLYNK SU CELLULARE INSERIRE UN BOTTONE CHE CONTROLLA IL LED SUL PIN D5 COME DA CIRCUITO
+/* DOPODICHE' DALL'APP BLYNK SU CELLULARE INSERIRE UN BOTTONE CHE CONTROLLA IL LED SUL PIN D5 COME DA CIRCUITO */
+/*THEN OPEN THE BLYNK APP ON YOUR SMARTPHONE AND CREATE A BUTTON WHICH CONTROLS D5 PIN'S LED*/
